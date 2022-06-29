@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeComponent extends StatelessWidget {
@@ -13,20 +12,23 @@ class HomeComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Image.asset(image),
-        Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
-          ),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+              color: Colors.black, fontSize: 30, fontWeight: FontWeight.w600),
         ),
         Center(
           child: Text(
             second,
+            textAlign: TextAlign.center,
             style: const TextStyle(
-                color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                color: Color.fromARGB(255, 114, 101, 101),
+                fontSize: 20,
+                fontWeight: FontWeight.w600),
           ),
         )
       ],

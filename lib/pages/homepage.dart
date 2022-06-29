@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task1/components/button1.dart';
 import 'package:task1/components/home.dart';
 
 List<String> mainParagraph = [
@@ -22,10 +23,10 @@ class _MyHomePageState extends State<MyHomePage> {
   final PageController pageController = PageController();
 
   updatePageState(index) {
-    if (index == 1) {
-      pageController.nextPage(
-          duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-    }
+    // if (index == 1) {
+    //   pageController.nextPage(
+    //       duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+    // }
     setState(() {
       _currentIndex = index;
     });
@@ -37,27 +38,50 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Container(
             padding: const EdgeInsets.all(20),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ElevatedButton(onPressed: () {}, child: const Text("skip")),
+                    MaterialButton(
+                      onPressed: () {},
+                      minWidth: 60,
+                      height: 35,
+                      color: const Color.fromARGB(255, 236, 208, 217),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: const Text("skip"),
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [Text('7krave')],
+                  children: const [
+                    Text(
+                      '7',
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.w800),
+                    ),
+                    Text(
+                      'krave',
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.teal,
+                          fontWeight: FontWeight.w800),
+                    )
+                  ],
                 ),
-                // Image.asset('assets/images/bike1.png'),
                 SizedBox(
-                  height: 700,
+                  height: 550,
                   child: PageView(
                       controller: pageController,
-                      onPageChanged: (num) {
-                        updatePageState(num);
+                      onPageChanged: (ind) {
+                        updatePageState(ind);
                         setState(() {
-                          _currentIndex = num;
+                          _currentIndex = ind;
                         });
                       },
                       scrollDirection: Axis.horizontal,
@@ -68,11 +92,30 @@ class _MyHomePageState extends State<MyHomePage> {
                           second: secParagraph[0],
                         ),
                         HomeComponent(
-                          image: 'assets/images/bike1.png',
+                          image: 'assets/images/sammy.png',
                           text: mainParagraph[1],
                           second: secParagraph[1],
                         )
                       ]),
+                ),
+                const MyButton(
+                  myText: 'Get Started',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account ?",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w700)),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Sign Up',
+                          style: TextStyle(
+                              color: Colors.teal,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700)),
+                    )
+                  ],
                 )
               ],
             )));
