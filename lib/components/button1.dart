@@ -5,22 +5,19 @@ class MyButton extends StatelessWidget {
   final String myText;
   final Color color;
   final double borderRadius;
+  final VoidCallback myFunc;
   const MyButton(
       {Key? key,
       required this.myText,
       this.color = Colors.teal,
+      required this.myFunc,
       this.borderRadius = 10})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const SignIn()),
-        );
-      },
+      onPressed: myFunc,
       minWidth: double.infinity,
       height: 60,
       color: color,

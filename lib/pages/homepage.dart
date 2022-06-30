@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task1/components/button1.dart';
 import 'package:task1/components/home.dart';
+import 'package:task1/pages/signin.dart';
 
 List<String> mainParagraph = [
   'Get food delivery to your doorstop asap',
@@ -23,10 +24,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final PageController pageController = PageController();
 
   updatePageState(index) {
-    // if (index == 1) {
-    //   pageController.nextPage(
-    //       duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-    // }
     setState(() {
       _currentIndex = index;
     });
@@ -98,9 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ]),
                 ),
-                const MyButton(
-                  myText: 'Get Started',
-                ),
+                MyButton(
+                    myText: 'Get Started',
+                    myFunc: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignIn()),
+                      );
+                    }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -108,7 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w700)),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignIn()),
+                        );
+                      },
                       child: const Text('Sign Up',
                           style: TextStyle(
                               color: Colors.teal,

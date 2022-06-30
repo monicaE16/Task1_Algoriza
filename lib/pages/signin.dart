@@ -1,6 +1,11 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:task1/components/ask_question.dart';
 import 'package:task1/components/button1.dart';
+import 'package:task1/components/head_title.dart';
+import 'package:task1/components/or_divider.dart';
+import 'package:task1/components/icon_button.dart';
+import 'package:task1/components/phone_number.dart';
+import 'package:task1/pages/register.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -39,143 +44,42 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Sign-in ',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0), fontSize: 40),
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: const [
-                            Text('Help'),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Icon(Icons.help_rounded)
-                          ],
-                        ))
-                  ],
+                const HeadTitle(
+                  title: 'Sign in',
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  'Phone Number',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 128, 125, 125)),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  controller: TextEditingController()..text = 'E.g 1054540227',
-                  keyboardType: TextInputType.phone,
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 167, 163, 163),
-                      decorationColor: Colors.white,
-                      fontSize: 15),
-                  decoration: InputDecoration(
-                    // contentPadding: EdgeInsets.symmetric(vertical: 2),
-                    enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.zero),
-                        borderSide: BorderSide(color: Colors.grey)),
-                    prefixIcon: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        CountryCodePicker(
-                          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                          initialSelection: '+20',
-                          showFlagMain: false,
-                          favorite: const ['+20', 'EG'],
-                          textStyle: const TextStyle(
-                              color: Colors.black,
-                              decorationColor: Colors.white,
-                              fontSize: 15),
-                          showFlag: true,
-                        ),
-                        const Icon(Icons.keyboard_arrow_down_outlined)
-                      ],
-                    ),
-                  ),
-                ),
+                const PhoneNumberFiled(),
                 const SizedBox(
                   height: 20,
                 ),
-                const MyButton(
+                MyButton(
                   myText: 'Sign In',
                   borderRadius: 0.0,
                   color: Colors.blue,
+                  myFunc: () {},
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                        color: Color.fromARGB(255, 231, 228, 228),
-                      ),
-                    ),
-                    Text(
-                      ' Or ',
-                      style: TextStyle(fontSize: 15, color: Colors.grey),
-                    ),
-                    Expanded(
-                      child: Divider(
-                          thickness: 1,
-                          color: Color.fromARGB(255, 231, 228, 228)),
-                    ),
-                  ],
-                ),
+                const OrDivider(),
                 const SizedBox(
                   height: 20,
                 ),
-                OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 50),
-                      side: const BorderSide(width: 1.0, color: Colors.blue),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.network(
-                          'http://pngimg.com/uploads/google/google_PNG19635.png',
-                          width: 30,
-                          height: 30,
-                        ),
-                        const Text(
-                          'Sign In with by Google',
-                          style: TextStyle(color: Colors.blue),
-                        )
-                      ],
-                    )),
+                const IconButton1(),
                 const SizedBox(
                   height: 15,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Don't have any account ?",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500)),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('Register Here',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
-                    ),
-                  ],
+                AccountQuestion(
+                  question: "Don't have any account ?",
+                  help: "Register Here",
+                  myFunc: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Register()),
+                    );
+                  },
                 ),
                 const SizedBox(
                   height: 20,
