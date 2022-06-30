@@ -1,5 +1,5 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:task1/components/button1.dart';
 
 class SignIn extends StatefulWidget {
@@ -13,14 +13,19 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          Image.asset(
-            'assets/images/pattern.png',
-            scale: 1.5,
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 3,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset(
+              'assets/images/pattern.png',
+              fit: BoxFit.cover,
+            ),
           ),
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,35 +36,103 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(
                       color: Color.fromARGB(255, 112, 104, 104), fontSize: 20),
                 ),
-                const Text(
-                  'Sign-in ',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0), fontSize: 40),
+                const SizedBox(
+                  height: 20,
                 ),
-                Container(
-                    height: 100,
-                    padding: const EdgeInsets.all(10),
-                    child: InternationalPhoneNumberInput(
-                      initialValue: PhoneNumber(isoCode: 'EG'),
-                      onInputChanged: (PhoneNumber value) {
-                        print(value);
-                      },
-                    )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Sign-in ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0), fontSize: 40),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: const [
+                            Text('Help'),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(Icons.help_rounded)
+                          ],
+                        ))
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Phone Number',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 128, 125, 125)),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: TextEditingController()..text = 'E.g 1054540227',
+                  keyboardType: TextInputType.phone,
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 167, 163, 163),
+                      decorationColor: Colors.white,
+                      fontSize: 15),
+                  decoration: InputDecoration(
+                    // contentPadding: EdgeInsets.symmetric(vertical: 2),
+                    enabledBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.zero),
+                        borderSide: BorderSide(color: Colors.grey)),
+                    prefixIcon: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CountryCodePicker(
+                          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                          initialSelection: '+20',
+                          showFlagMain: false,
+                          favorite: const ['+20', 'EG'],
+                          textStyle: const TextStyle(
+                              color: Colors.black,
+                              decorationColor: Colors.white,
+                              fontSize: 15),
+                          showFlag: true,
+                        ),
+                        const Icon(Icons.keyboard_arrow_down_outlined)
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 const MyButton(
                   myText: 'Sign In',
+                  borderRadius: 0.0,
                   color: Colors.blue,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
+                        color: Color.fromARGB(255, 231, 228, 228),
+                      ),
+                    ),
                     Text(
-                      'or',
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
-                    )
+                      ' Or ',
+                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                    ),
+                    Expanded(
+                      child: Divider(
+                          thickness: 1,
+                          color: Color.fromARGB(255, 231, 228, 228)),
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -85,21 +158,32 @@ class _SignInState extends State<SignIn> {
                         )
                       ],
                     )),
+                const SizedBox(
+                  height: 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("Don't have any account ?",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500)),
+                            fontSize: 15, fontWeight: FontWeight.w500)),
                     TextButton(
                       onPressed: () {},
                       child: const Text('Register Here',
                           style: TextStyle(
                               color: Colors.blue,
-                              fontSize: 20,
+                              fontSize: 15,
                               fontWeight: FontWeight.w500)),
-                    )
+                    ),
                   ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Use the application according to the policy rules. Any kind of violations will be subject to sanctions',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.grey),
                 )
               ],
             ),

@@ -4,7 +4,12 @@ import 'package:task1/pages/signin.dart';
 class MyButton extends StatelessWidget {
   final String myText;
   final Color color;
-  const MyButton({Key? key, required this.myText, this.color = Colors.teal})
+  final double borderRadius;
+  const MyButton(
+      {Key? key,
+      required this.myText,
+      this.color = Colors.teal,
+      this.borderRadius = 10})
       : super(key: key);
 
   @override
@@ -20,7 +25,7 @@ class MyButton extends StatelessWidget {
       height: 60,
       color: color,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: Text(
         myText,
