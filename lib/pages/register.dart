@@ -62,13 +62,17 @@ class _RegisterState extends State<Register> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const InputField(name: 'Password', initialText: 'password'),
+                  const InputField(
+                    name: 'Password',
+                    initialText: 'password',
+                    icon: Icon(Icons.visibility_rounded),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
                   MyButton(
                     myText: 'Register',
-                    borderRadius: 0.0,
+                    borderRadius: 3.0,
                     color: Colors.blue,
                     myFunc: () {},
                   ),

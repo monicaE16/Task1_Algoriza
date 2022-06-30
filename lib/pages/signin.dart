@@ -56,7 +56,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 MyButton(
                   myText: 'Sign In',
-                  borderRadius: 0.0,
+                  borderRadius: 5.0,
                   color: Colors.blue,
                   myFunc: () {},
                 ),

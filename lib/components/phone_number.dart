@@ -30,7 +30,7 @@ class PhoneNumberFiled extends StatelessWidget {
           decoration: InputDecoration(
             // contentPadding: EdgeInsets.symmetric(vertical: 2),
             enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.zero),
+                borderRadius: BorderRadius.all(Radius.circular(3)),
                 borderSide: BorderSide(color: Colors.grey)),
             prefixIcon: Row(
               mainAxisAlignment: MainAxisAlignment.start,
